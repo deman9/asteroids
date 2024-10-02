@@ -8,9 +8,12 @@ class CircleShape(pygame.sprite.Sprite):
         else:
             super().__init__()
 
-        self.postition = pygame.Vector2(x, y)
-        self.velocity = pygame.Vector3(0, 0)
+        self.position = pygame.Vector2(x, y)
+        self.velocity = pygame.Vector3(0, 0, 0)
         self.radius = radius
 
     def draw(self, screen):
+        pass
+
+    def update(self, dt):
         pass
