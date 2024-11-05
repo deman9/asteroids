@@ -18,7 +18,9 @@ def main():
     updatable = pg.sprite.Group()
     drawable = pg.sprite.Group()
     asteroids = pg.sprite.Group()
+    shots = pg.sprite.Group()
     pl.Player.containers = (updatable, drawable)
+    pl.Shot.containers = (updatable, drawable, shots)
     ast.Asteroid.containers = (updatable, drawable, asteroids)
     af.AsteroidField.containers = (updatable)
     player = pl.Player(x, y)
@@ -32,10 +34,14 @@ def main():
         for object in updatable:
             object.update(dt)
         for object in asteroids:
-            print("checking collisions")
             if object.collision(player):
                 print("Game Over")
                 sys.exit()
+        for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.collision(shot):
+                    shot.kill()
+                    asteroid.split()
         for object in drawable:
             object.draw(screen)
         pg.display.flip()
