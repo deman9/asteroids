@@ -1,9 +1,9 @@
 import sys
 import pygame as pg
-import constants
-import player as pl
-import asteroids as ast
-import asteroidFiled as af
+from modules import constants
+from modules import player as pl
+from modules import asteroids as ast
+from modules import asteroidFiled as af
 
 
 def main():
